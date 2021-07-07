@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Space X</string>
+    <string name="space">Space</string>
+    <string name="ship">Ship</string>
+    <string name="crew">Crew</string>
+    <string name="company">Company</string>
 </resources>

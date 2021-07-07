@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_saturn"
+        android:title="@string/space"/>
+
+    <item android:id="@+id/shipFragment"
+        android:icon="@drawable/ic_rocket_launch"
+        android:title="@string/ship"/>
+
+    <item android:id="@+id/crewFragment"
+        android:icon="@drawable/ic_astronaut_helmet"
+        android:title="@string/crew"/>
+
+    <item android:id="@+id/companyInfoFragment"
+        android:icon="@drawable/ic_office_building"
+        android:title="@string/company"/>
+
+</menu>
