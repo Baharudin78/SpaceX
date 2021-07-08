@@ -1,5 +1,9 @@
 package com.baharudin.spacex.data
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class DragonResponseItem(
     val active: Boolean,
     val crew_capacity: Int,
@@ -11,4 +15,4 @@ data class DragonResponseItem(
     val id: String,
     val name: String,
     val wikipedia: String
-)
+) : Parcelable

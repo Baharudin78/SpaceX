@@ -1,12 +1,8 @@
 package com.baharudin.spacex.network
 
-class SpaceRepository
-    (val spaceApi: SpaceApi)
-{
+class SpaceRepository{
     suspend fun getAllCapsule() =
-        spaceApi.getAllCapsule()
-
+        RetrofitInstance.api.getAllCapsule()
     suspend fun getAllDragon() =
-        spaceApi.getAllDragon()
-
+        RetrofitInstance.api.getAllDragon()
 }
