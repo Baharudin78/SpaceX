@@ -1,11 +1,15 @@
 package com.baharudin.spacex.network
 
 import com.baharudin.spacex.data.CapsuleResponse
+import com.baharudin.spacex.data.DragonResponse
+import retrofit2.Response
 import retrofit2.http.GET
 
 
 interface SpaceApi {
 
     @GET("capsules")
-    fun getAllCapsule() : ArrayList<CapsuleResponse>
+    suspend fun getAllCapsule() : Response<CapsuleResponse>
+    @GET("dragons")
+    suspend fun getAllDragon() : Response<DragonResponse>
 }

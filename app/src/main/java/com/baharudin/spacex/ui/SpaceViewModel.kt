@@ -21,7 +21,7 @@ class SpaceViewModel(
     fun getAllCapsule() = viewModelScope.launch {
         getAllCapsule.postValue(Resource.Loading())
         val response = repository.getAllCapsule()
-//        getAllCapsule.postValue(handleGetAllCapsule())
+        getAllCapsule.postValue(handleGetAllCapsule(response))
     }
     private fun handleGetAllCapsule(response : Response<CapsuleResponse>) : Resource<CapsuleResponse> {
         if (response.isSuccessful) {

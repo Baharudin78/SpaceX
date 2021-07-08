@@ -4,4 +4,7 @@
     <string name="ship">Ship</string>
     <string name="crew">Crew</string>
     <string name="company">Company</string>
+    <string name="welcome">Welcome To SpaceX</string>
+    <string name="capsule">Capsule</string>
+    <string name="dragons">Dragons</string>
 </resources>
