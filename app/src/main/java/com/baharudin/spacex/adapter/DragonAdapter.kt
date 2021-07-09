@@ -3,12 +3,9 @@ package com.baharudin.spacex.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.baharudin.spacex.R
-import com.baharudin.spacex.data.DragonResponse
 import com.baharudin.spacex.data.DragonResponseItem
 import com.baharudin.spacex.databinding.ItemDragonBinding
 import com.bumptech.glide.Glide
@@ -53,6 +50,7 @@ class DragonAdapter: RecyclerView.Adapter<DragonAdapter.DragonViewHolder>() {
             Glide.with(contextAdapter)
                 .load(dragon.flickr_images[2])
                 .into(ivDragon)
+            tvNamaDragon.text = dragon.name
         }
     }
 

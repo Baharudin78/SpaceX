@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.baharudin.spacex.R
 import com.baharudin.spacex.adapter.DragonAdapter
+import com.baharudin.spacex.adapter.ShipAdapter
 import com.baharudin.spacex.data.DragonResponse
-import com.baharudin.spacex.data.DragonResponseItem
+import com.baharudin.spacex.data.ShipResponse
 import com.baharudin.spacex.databinding.FragmentHomeBinding
 import com.baharudin.spacex.ui.MainActivity
 import com.baharudin.spacex.ui.SpaceViewModel
@@ -20,7 +22,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding get() = _binding!!
     private lateinit var viewModel : SpaceViewModel
     private lateinit var dragonAdapter : DragonAdapter
+    private lateinit var shipAdapter : ShipAdapter
     private var dataList = ArrayList<DragonResponse>()
+    private var dataShip = ArrayList<ShipResponse>()
 
     private var Tasd ="DragonRespon"
 
@@ -29,16 +33,41 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = (activity as MainActivity).viewModel
-        setRecycleView()
+
 
         viewModel.getAllDragon.observe(viewLifecycleOwner, { response ->
             when(response) {
                 is Resource.Success -> {
                     hideProgeressbar()
                     response.data?.let { dragonResponse ->
+                        setRecycleView()
                         dataList.add(dragonResponse)
                         Log.d("hasil","$dragonResponse")
-//                        dragonAdapter.differ.submitList(dragonResponse)
+                        dragonAdapter.differ.submitList(dragonResponse)
+
+                    }
+                }
+                is Resource.Error -> {
+                    hideProgeressbar()
+                    response.messege?.let { messege ->
+                        Log.e(Tasd,"error di $messege")
+                    }
+                }
+                is Resource.Loading -> {
+                    showProgressbar()
+                }
+            }
+        })
+        viewModel.getAllShip.observe(viewLifecycleOwner, Observer {response ->
+            when(response) {
+                is Resource.Success -> {
+                    hideProgeressbar()
+                    response.data?.let { shipResponse ->
+                        setRecycleViewShip()
+                        dataShip.add(shipResponse)
+                        dataShip.random()
+                        Log.d("hasil","$shipResponse")
+                        shipAdapter.differ.submitList(shipResponse)
 
                     }
                 }
@@ -66,6 +95,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         dragonAdapter.notifyDataSetChanged()
         binding.rvDragon.apply {
             adapter = dragonAdapter
+            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false)
+        }
+    }
+
+    private fun setRecycleViewShip() {
+        shipAdapter = ShipAdapter()
+        shipAdapter.notifyDataSetChanged()
+        binding.rvShip.apply {
+            adapter = shipAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
     }
