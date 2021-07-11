@@ -5,4 +5,6 @@ class SpaceRepository{
         RetrofitInstance.api.getAllDragon()
     suspend fun getAllShip() =
         RetrofitInstance.api.getAllShip()
+    suspend fun getAllRocket() =
+        RetrofitInstance.api.getAllRocket()
 }

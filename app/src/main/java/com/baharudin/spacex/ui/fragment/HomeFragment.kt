@@ -41,6 +41,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     hideProgeressbar()
                     response.data?.let { dragonResponse ->
                         setRecycleView()
+                        hideProgeressbar()
                         dataList.add(dragonResponse)
                         Log.d("hasil","$dragonResponse")
                         dragonAdapter.differ.submitList(dragonResponse)
