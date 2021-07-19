@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.baharudin.spacex.data.DragonResponseItem
+import com.baharudin.spacex.data.dragon.DragonResponseItem
 import com.baharudin.spacex.databinding.ItemDragonBinding
 import com.bumptech.glide.Glide
 

@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.baharudin.spacex.R
 import com.baharudin.spacex.adapter.DragonAdapter
 import com.baharudin.spacex.adapter.ShipAdapter
-import com.baharudin.spacex.data.DragonResponse
-import com.baharudin.spacex.data.ShipResponse
+import com.baharudin.spacex.data.dragon.DragonResponse
+import com.baharudin.spacex.data.ship.ShipResponse
 import com.baharudin.spacex.databinding.FragmentHomeBinding
 import com.baharudin.spacex.ui.MainActivity
 import com.baharudin.spacex.ui.SpaceViewModel

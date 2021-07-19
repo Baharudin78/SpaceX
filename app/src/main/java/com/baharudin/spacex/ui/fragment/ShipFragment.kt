@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.baharudin.spacex.R
 import com.baharudin.spacex.adapter.RocketAdapter
-import com.baharudin.spacex.data.RocketResponse
+import com.baharudin.spacex.data.rocket.RocketResponse
 import com.baharudin.spacex.databinding.FragmentShipBinding
 import com.baharudin.spacex.ui.MainActivity
 import com.baharudin.spacex.ui.SpaceViewModel

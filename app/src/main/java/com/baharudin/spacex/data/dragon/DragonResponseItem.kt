@@ -1,4 +1,4 @@
-package com.baharudin.spacex.data
+package com.baharudin.spacex.data.dragon
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

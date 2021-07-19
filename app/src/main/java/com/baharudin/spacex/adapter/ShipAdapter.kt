@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.baharudin.spacex.data.ShipResponseItem
+import com.baharudin.spacex.data.ship.ShipResponseItem
 import com.baharudin.spacex.databinding.ItemShipBinding
 import com.bumptech.glide.Glide
 

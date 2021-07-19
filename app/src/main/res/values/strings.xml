@@ -2,10 +2,10 @@
     <string name="app_name">Space X</string>
     <string name="space">Space</string>
     <string name="ship">Ship</string>
-    <string name="crew">Crew</string>
     <string name="company">Company</string>
     <string name="welcome">Welcome To SpaceX</string>
     <string name="capsule">Capsule</string>
     <string name="dragons">Dragons</string>
     <string name="rocket">Rocket</string>
+    <string name="crew">Crew</string>
 </resources>

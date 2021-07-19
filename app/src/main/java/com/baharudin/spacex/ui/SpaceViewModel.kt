@@ -3,9 +3,10 @@ package com.baharudin.spacex.ui
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.baharudin.spacex.data.DragonResponse
-import com.baharudin.spacex.data.RocketResponse
-import com.baharudin.spacex.data.ShipResponse
+import com.baharudin.spacex.data.crew.CrewResponse
+import com.baharudin.spacex.data.dragon.DragonResponse
+import com.baharudin.spacex.data.rocket.RocketResponse
+import com.baharudin.spacex.data.ship.ShipResponse
 import com.baharudin.spacex.network.SpaceRepository
 import com.baharudin.spacex.util.Resource
 import kotlinx.coroutines.launch
@@ -17,12 +18,13 @@ class SpaceViewModel(
     val getAllDragon : MutableLiveData<Resource<DragonResponse>> = MutableLiveData()
     val getAllShip : MutableLiveData<Resource<ShipResponse>> = MutableLiveData()
     val getAllRocket : MutableLiveData<Resource<RocketResponse>> = MutableLiveData()
-
+    val getAllCrew : MutableLiveData<Resource<CrewResponse>> = MutableLiveData()
 
     init {
         getAllDragon()
         getAllShip()
         getAllRocket()
+        getAllCrew()
     }
 
 
@@ -41,6 +43,11 @@ class SpaceViewModel(
         getAllRocket.postValue(Resource.Loading())
         val responseRocket = repository.getAllRocket()
         getAllRocket.postValue(handleGetAllRocket(responseRocket))
+    }
+    fun getAllCrew() = viewModelScope.launch {
+        getAllCrew.postValue(Resource.Loading())
+        val responseCrew = repository.getAllCrew()
+        getAllCrew.postValue(handleGetAllCrew(responseCrew))
     }
     private fun handleGetAllDragon(response: Response<DragonResponse>) : Resource<DragonResponse> {
         if (response.isSuccessful) {
@@ -64,6 +71,15 @@ class SpaceViewModel(
         if (response.isSuccessful) {
             response.body()?.let { resultRocket ->
                 return Resource.Success(resultRocket)
+            }
+        }
+        return Resource.Error(response.message())
+    }
+
+    private fun handleGetAllCrew(response : Response<CrewResponse>) : Resource<CrewResponse> {
+        if(response.isSuccessful) {
+            response.body()?.let {  resultCrew ->
+                return Resource.Success(resultCrew)
             }
         }
         return Resource.Error(response.message())
