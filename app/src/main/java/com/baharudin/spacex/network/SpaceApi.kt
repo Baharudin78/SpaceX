@@ -1,5 +1,6 @@
 package com.baharudin.spacex.network
 
+import com.baharudin.spacex.data.company.CompanyResponse
 import com.baharudin.spacex.data.crew.CrewResponse
 import com.baharudin.spacex.data.dragon.DragonResponse
 import com.baharudin.spacex.data.rocket.RocketResponse
@@ -17,4 +18,6 @@ interface SpaceApi {
     suspend fun getAllRocket() : Response<RocketResponse>
     @GET("crew")
     suspend fun getAllCrew() : Response<CrewResponse>
+    @GET("company")
+    suspend fun getCompanyInfo() : Response<CompanyResponse>
 }

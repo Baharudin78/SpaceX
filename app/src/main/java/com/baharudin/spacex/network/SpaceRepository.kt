@@ -9,4 +9,6 @@ class SpaceRepository{
         RetrofitInstance.api.getAllRocket()
     suspend fun getAllCrew() =
         RetrofitInstance.api.getAllCrew()
+    suspend fun getCompanyInfo() =
+        RetrofitInstance.api.getCompanyInfo()
 }

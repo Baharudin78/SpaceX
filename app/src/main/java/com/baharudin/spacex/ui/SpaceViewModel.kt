@@ -3,6 +3,7 @@ package com.baharudin.spacex.ui
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.baharudin.spacex.data.company.CompanyResponse
 import com.baharudin.spacex.data.crew.CrewResponse
 import com.baharudin.spacex.data.dragon.DragonResponse
 import com.baharudin.spacex.data.rocket.RocketResponse
@@ -19,12 +20,14 @@ class SpaceViewModel(
     val getAllShip : MutableLiveData<Resource<ShipResponse>> = MutableLiveData()
     val getAllRocket : MutableLiveData<Resource<RocketResponse>> = MutableLiveData()
     val getAllCrew : MutableLiveData<Resource<CrewResponse>> = MutableLiveData()
+    val getCompanyInfo : MutableLiveData<Resource<CompanyResponse>> = MutableLiveData()
 
     init {
         getAllDragon()
         getAllShip()
         getAllRocket()
         getAllCrew()
+        getCompanyInfo()
     }
 
 
@@ -48,6 +51,11 @@ class SpaceViewModel(
         getAllCrew.postValue(Resource.Loading())
         val responseCrew = repository.getAllCrew()
         getAllCrew.postValue(handleGetAllCrew(responseCrew))
+    }
+    fun getCompanyInfo() = viewModelScope.launch {
+        getCompanyInfo.postValue(Resource.Loading())
+        val responseCompany = repository.getCompanyInfo()
+        getCompanyInfo.postValue(handleCompanyInfo(responseCompany))
     }
     private fun handleGetAllDragon(response: Response<DragonResponse>) : Resource<DragonResponse> {
         if (response.isSuccessful) {
@@ -80,6 +88,14 @@ class SpaceViewModel(
         if(response.isSuccessful) {
             response.body()?.let {  resultCrew ->
                 return Resource.Success(resultCrew)
+            }
+        }
+        return Resource.Error(response.message())
+    }
+    private fun handleCompanyInfo(response : Response<CompanyResponse>) : Resource<CompanyResponse> {
+        if (response.isSuccessful) {
+            response.body()?.let { resultCompany ->
+                return Resource.Success(resultCompany)
             }
         }
         return Resource.Error(response.message())
