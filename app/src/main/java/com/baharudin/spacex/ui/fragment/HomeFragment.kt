@@ -4,19 +4,20 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.baharudin.spacex.R
 import com.baharudin.spacex.adapter.DragonAdapter
 import com.baharudin.spacex.adapter.ShipAdapter
 import com.baharudin.spacex.data.dragon.DragonResponse
+import com.baharudin.spacex.data.dragon.DragonResponseItem
 import com.baharudin.spacex.data.ship.ShipResponse
 import com.baharudin.spacex.databinding.FragmentHomeBinding
 import com.baharudin.spacex.ui.MainActivity
 import com.baharudin.spacex.ui.SpaceViewModel
 import com.baharudin.spacex.util.Resource
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment(R.layout.fragment_home), DragonAdapter.OnClickItemListener{
 
     private var _binding : FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -26,13 +27,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private var dataList = ArrayList<DragonResponse>()
     private var dataShip = ArrayList<ShipResponse>()
 
-    private var Tasd ="DragonRespon"
+    private val SIGNS = "ERROR"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         _binding = FragmentHomeBinding.bind(view)
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = (activity as MainActivity).viewModel
+
+        dragonAdapter = DragonAdapter(this)
 
 
         viewModel.getAllDragon.observe(viewLifecycleOwner, { response ->
@@ -51,7 +54,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 is Resource.Error -> {
                     hideProgeressbar()
                     response.messege?.let { messege ->
-                        Log.e(Tasd,"error di $messege")
+                        Log.e(SIGNS,"error di $messege")
                     }
                 }
                 is Resource.Loading -> {
@@ -59,7 +62,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
             }
         })
-        viewModel.getAllShip.observe(viewLifecycleOwner, Observer {response ->
+        viewModel.getAllShip.observe(viewLifecycleOwner,  {response ->
             when(response) {
                 is Resource.Success -> {
                     hideProgeressbar()
@@ -67,7 +70,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         setRecycleViewShip()
                         dataShip.add(shipResponse)
                         dataShip.random()
-                        Log.d("hasil","$shipResponse")
+                        Log.d(SIGNS,"$shipResponse")
                         shipAdapter.differ.submitList(shipResponse)
 
                     }
@@ -75,7 +78,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 is Resource.Error -> {
                     hideProgeressbar()
                     response.messege?.let { messege ->
-                        Log.e(Tasd,"error di $messege")
+                        Log.e(SIGNS,"error di $messege")
                     }
                 }
                 is Resource.Loading -> {
@@ -83,7 +86,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
             }
         })
-
     }
     private fun hideProgeressbar (){
         binding.progressBar.visibility = View.INVISIBLE
@@ -92,7 +94,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.progressBar.visibility = View.VISIBLE
     }
     private fun setRecycleView() {
-        dragonAdapter = DragonAdapter()
+        dragonAdapter = DragonAdapter(this)
         dragonAdapter.notifyDataSetChanged()
         binding.rvDragon.apply {
             adapter = dragonAdapter
@@ -108,4 +110,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             layoutManager = LinearLayoutManager(requireContext())
         }
     }
+
+    override fun OnItemClick(dragon: DragonResponseItem) {
+        val action = HomeFragmentDirections.actionHomeFragmentToDetailDragonFragment(dragon)
+        findNavController().navigate(action)
+    }
+
 }

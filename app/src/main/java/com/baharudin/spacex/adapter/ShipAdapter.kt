@@ -60,4 +60,5 @@ class ShipAdapter : RecyclerView.Adapter<ShipAdapter.ShipViewHolder>() {
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
+
 }

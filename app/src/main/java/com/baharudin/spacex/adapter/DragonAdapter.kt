@@ -10,29 +10,40 @@ import com.baharudin.spacex.data.dragon.DragonResponseItem
 import com.baharudin.spacex.databinding.ItemDragonBinding
 import com.bumptech.glide.Glide
 
-class DragonAdapter: RecyclerView.Adapter<DragonAdapter.DragonViewHolder>() {
+class DragonAdapter(private val listener : OnClickItemListener) : RecyclerView.Adapter<DragonAdapter.DragonViewHolder>() {
 
     private lateinit var contextAdapter : Context
-    inner class DragonViewHolder(val binding : ItemDragonBinding) : RecyclerView.ViewHolder(binding.root)
+
+    inner class DragonViewHolder(val binding : ItemDragonBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.root.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val item = differ.currentList[position]
+                    if (item != null) {
+                        listener.OnItemClick(item)
+                    }
+                }
+            }
+        }
+    }
 
     private var diffUtil = object  : DiffUtil.ItemCallback<DragonResponseItem>() {
+
         override fun areItemsTheSame(
             oldItem: DragonResponseItem,
             newItem: DragonResponseItem
         ): Boolean {
             return oldItem.id == newItem.id
         }
-
         override fun areContentsTheSame(
             oldItem: DragonResponseItem,
             newItem: DragonResponseItem
         ): Boolean {
             return oldItem == newItem
         }
-
     }
      val differ = AsyncListDiffer(this, diffUtil)
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DragonViewHolder {
         val inflater = ItemDragonBinding.inflate(
             LayoutInflater.from(
@@ -43,7 +54,6 @@ class DragonAdapter: RecyclerView.Adapter<DragonAdapter.DragonViewHolder>() {
         contextAdapter = parent.context
         return DragonViewHolder(inflater)
     }
-
     override fun onBindViewHolder(holder: DragonViewHolder, position: Int) {
         val dragon = differ.currentList[position]
         holder.binding.apply {
@@ -53,8 +63,12 @@ class DragonAdapter: RecyclerView.Adapter<DragonAdapter.DragonViewHolder>() {
             tvNamaDragon.text = dragon.name
         }
     }
-
     override fun getItemCount(): Int {
        return differ.currentList.size
     }
+
+    interface OnClickItemListener{
+        fun OnItemClick(dragon : DragonResponseItem)
+    }
+
 }

@@ -1,6 +1,8 @@
 package com.baharudin.spacex.ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -24,12 +26,22 @@ class MainActivity : AppCompatActivity() {
 
         val spaceRepository = SpaceRepository()
         val viewModelProviderFactory = ViewModelFactory(spaceRepository)
+
         viewModel = ViewModelProvider(this,viewModelProviderFactory).get(SpaceViewModel::class.java)
         val navigation = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-        navController = navigation.findNavController()
+        navController = navigation.navController
+
 
         binding.apply {
             bottomNavigationView.setupWithNavController(navController)
+            navigation.findNavController().addOnDestinationChangedListener{ _, destination, _ ->
+                when (destination.id) {
+                    R.id.homeFragment, R.id.shipFragment, R.id.crewFragment, R.id.companyInfoFragment ->
+                        bottomNavigationView.visibility = View.VISIBLE
+                    else -> bottomNavigationView.visibility = View.GONE
+                }
+            }
         }
     }
+
 }
