@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_detailDragonFragment"
             app:destination="@id/detailDragonFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_shipDetailFragment"
+            app:destination="@id/shipDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/companyInfoFragment"
@@ -37,5 +40,14 @@
         <argument
             android:name="dragon"
             app:argType="com.baharudin.spacex.data.dragon.DragonResponseItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/shipDetailFragment"
+        android:name="com.baharudin.spacex.ui.fragment.ShipDetailFragment"
+        android:label="fragment_detail_ship"
+        tools:layout="@layout/fragment_detail_ship" >
+        <argument
+            android:name="ships"
+            app:argType="com.baharudin.spacex.data.ship.ShipResponseItem" />
     </fragment>
 </navigation>

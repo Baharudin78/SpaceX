@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.fragment.DetailDragonFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black"
+    tools:context=".ui.fragment.RocketDetailFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <ImageView
-            android:id="@+id/iv_dragon"
+            android:id="@+id/iv_ship"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -22,13 +26,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_nama"
+            android:id="@+id/tv_ship"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:fontFamily="@font/montserrat"
             android:textColor="@color/white"
             android:textSize="25sp"
-            android:layout_gravity="center_horizontal"
             tools:text="Dragon" />
 
         <LinearLayout
@@ -104,7 +108,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/tv_masssa"
+                android:id="@+id/tv_homeport"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/montserrat"
@@ -115,26 +119,6 @@
                 tools:text="230" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/montserrat"
-            android:text="@string/description"
-            android:textColor="@color/white"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:id="@+id/tv_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="dfsdhfdshdhfdhdh"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/montserrat"
-            android:textSize="20sp"
-            android:textColor="@color/white"/>
 
         <ProgressBar
             android:id="@+id/progressBar4"
@@ -142,4 +126,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

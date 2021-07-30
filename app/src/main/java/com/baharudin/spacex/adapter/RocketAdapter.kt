@@ -10,10 +10,22 @@ import com.baharudin.spacex.data.rocket.RocketResponseItem
 import com.baharudin.spacex.databinding.ItemRocketBinding
 import com.bumptech.glide.Glide
 
-class RocketAdapter : RecyclerView.Adapter<RocketAdapter.RocketHolder>() {
+class RocketAdapter(private var listener : OnRocketClickListener) : RecyclerView.Adapter<RocketAdapter.RocketHolder>() {
     private lateinit var contexAdapter : Context
 
-    inner class RocketHolder(val binding : ItemRocketBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class RocketHolder(val binding : ItemRocketBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.root.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val itemRocket = differ.currentList[position]
+                    if (itemRocket != null) {
+                        listener.OnClickListener(itemRocket)
+                    }
+                }
+            }
+        }
+    }
 
     private var diffUtil = object : DiffUtil.ItemCallback<RocketResponseItem>() {
         override fun areItemsTheSame(
@@ -56,5 +68,9 @@ class RocketAdapter : RecyclerView.Adapter<RocketAdapter.RocketHolder>() {
 
     override fun getItemCount(): Int {
         return differ.currentList.size
+    }
+
+    interface OnRocketClickListener {
+        fun OnClickListener(rocket : RocketResponseItem)
     }
 }

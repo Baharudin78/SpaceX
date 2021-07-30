@@ -14,5 +14,6 @@ data class DragonResponseItem(
     val flickr_images: List<String>,
     val id: String,
     val name: String,
-    val wikipedia: String
+    val wikipedia: String,
+    val type : String
 ) : Parcelable

@@ -1,5 +1,6 @@
 package com.baharudin.spacex.ui.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,12 +13,13 @@ import com.baharudin.spacex.adapter.ShipAdapter
 import com.baharudin.spacex.data.dragon.DragonResponse
 import com.baharudin.spacex.data.dragon.DragonResponseItem
 import com.baharudin.spacex.data.ship.ShipResponse
+import com.baharudin.spacex.data.ship.ShipResponseItem
 import com.baharudin.spacex.databinding.FragmentHomeBinding
 import com.baharudin.spacex.ui.MainActivity
 import com.baharudin.spacex.ui.SpaceViewModel
 import com.baharudin.spacex.util.Resource
 
-class HomeFragment : Fragment(R.layout.fragment_home), DragonAdapter.OnClickItemListener{
+class HomeFragment : Fragment(R.layout.fragment_home), DragonAdapter.OnClickItemListener, ShipAdapter.OnItemClickListener{
 
     private var _binding : FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -93,6 +95,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), DragonAdapter.OnClickItem
     private fun showProgressbar(){
         binding.progressBar.visibility = View.VISIBLE
     }
+    @SuppressLint("NotifyDataSetChanged")
     private fun setRecycleView() {
         dragonAdapter = DragonAdapter(this)
         dragonAdapter.notifyDataSetChanged()
@@ -102,8 +105,9 @@ class HomeFragment : Fragment(R.layout.fragment_home), DragonAdapter.OnClickItem
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun setRecycleViewShip() {
-        shipAdapter = ShipAdapter()
+        shipAdapter = ShipAdapter(this)
         shipAdapter.notifyDataSetChanged()
         binding.rvShip.apply {
             adapter = shipAdapter
@@ -114,6 +118,11 @@ class HomeFragment : Fragment(R.layout.fragment_home), DragonAdapter.OnClickItem
     override fun OnItemClick(dragon: DragonResponseItem) {
         val action = HomeFragmentDirections.actionHomeFragmentToDetailDragonFragment(dragon)
         findNavController().navigate(action)
+    }
+
+    override fun onCLick(ship: ShipResponseItem) {
+        val toShip = HomeFragmentDirections.actionHomeFragmentToShipDetailFragment(ship)
+        findNavController().navigate(toShip)
     }
 
 }

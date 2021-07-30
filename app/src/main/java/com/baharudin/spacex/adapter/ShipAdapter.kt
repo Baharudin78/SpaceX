@@ -10,11 +10,23 @@ import com.baharudin.spacex.data.ship.ShipResponseItem
 import com.baharudin.spacex.databinding.ItemShipBinding
 import com.bumptech.glide.Glide
 
-class ShipAdapter : RecyclerView.Adapter<ShipAdapter.ShipViewHolder>() {
+class ShipAdapter(private val listener : OnItemClickListener) : RecyclerView.Adapter<ShipAdapter.ShipViewHolder>() {
 
     private lateinit var contextAdapter : Context
 
-    inner class ShipViewHolder(val binding: ItemShipBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ShipViewHolder(val binding: ItemShipBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.root.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val item = differ.currentList[position]
+                    if (item != null) {
+                        listener.onCLick(item)
+                    }
+                }
+            }
+        }
+    }
 
     private var diffUtil = object : DiffUtil.ItemCallback<ShipResponseItem>(){
         override fun areItemsTheSame(
@@ -59,6 +71,10 @@ class ShipAdapter : RecyclerView.Adapter<ShipAdapter.ShipViewHolder>() {
 
     override fun getItemCount(): Int {
         return differ.currentList.size
+    }
+
+    interface OnItemClickListener {
+        fun onCLick(ship : ShipResponseItem)
     }
 
 }

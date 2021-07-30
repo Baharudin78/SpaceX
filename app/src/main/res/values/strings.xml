@@ -8,4 +8,8 @@
     <string name="dragons">Dragons</string>
     <string name="rocket">Rocket</string>
     <string name="crew">Crew</string>
+    <string name="type">Type:</string>
+    <string name="first_flight">First Flight :</string>
+    <string name="massa_kg">Massa (Kg) :</string>
+    <string name="description">Description :</string>
 </resources>
