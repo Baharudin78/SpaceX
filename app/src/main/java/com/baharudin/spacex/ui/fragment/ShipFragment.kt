@@ -4,16 +4,18 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.baharudin.spacex.R
 import com.baharudin.spacex.adapter.RocketAdapter
 import com.baharudin.spacex.data.rocket.RocketResponse
+import com.baharudin.spacex.data.rocket.RocketResponseItem
 import com.baharudin.spacex.databinding.FragmentShipBinding
 import com.baharudin.spacex.ui.MainActivity
 import com.baharudin.spacex.ui.SpaceViewModel
 import com.baharudin.spacex.util.Resource
 
-class ShipFragment : Fragment(R.layout.fragment_ship) {
+class ShipFragment : Fragment(R.layout.fragment_ship) , RocketAdapter.OnRocketClickListener{
 
     private var _binding : FragmentShipBinding? = null
     private val binding get() = _binding!!
@@ -60,12 +62,17 @@ class ShipFragment : Fragment(R.layout.fragment_ship) {
         binding.progressBar2.visibility = View.INVISIBLE
     }
     private fun setRecycleView() {
-        rocketAdapter = RocketAdapter()
+        rocketAdapter = RocketAdapter(this)
         rocketAdapter.notifyDataSetChanged()
         binding.recyclerView.apply {
             adapter = rocketAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
+    }
+
+    override fun OnClickListener(rocket: RocketResponseItem) {
+        val action = ShipFragmentDirections.actionShipFragmentToRocketDetailFragment(rocket)
+        findNavController().navigate(action)
     }
 
 }

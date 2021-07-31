@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/fragment_crew.xml" value="0.17274569402228976" />
+        <entry key="app/src/main/res/layout/fragment_crew_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_detail_dragon.xml" value="0.22780797101449277" />
         <entry key="app/src/main/res/layout/fragment_detail_ship.xml" value="0.17274569402228976" />
         <entry key="app/src/main/res/layout/fragment_rocket_detail.xml" value="0.35520833333333335" />
+        <entry key="app/src/main/res/layout/item_crew.xml" value="0.17274569402228976" />
       </map>
     </option>
   </component>

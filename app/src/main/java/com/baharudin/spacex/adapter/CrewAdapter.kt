@@ -10,11 +10,23 @@ import com.baharudin.spacex.data.crew.CrewResponseItem
 import com.baharudin.spacex.databinding.ItemCrewBinding
 import com.bumptech.glide.Glide
 
-class CrewAdapter : RecyclerView.Adapter<CrewAdapter.CrewHolder>() {
+class CrewAdapter(private val listener : OnClickItemListener) : RecyclerView.Adapter<CrewAdapter.CrewHolder>() {
 
     private lateinit var contexts : Context
 
-    class CrewHolder(val binding : ItemCrewBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class CrewHolder(val binding : ItemCrewBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+           binding.root.setOnClickListener {
+               val position = adapterPosition
+               if (position != RecyclerView.NO_POSITION) {
+                   val item = differ.currentList[position]
+                   if (item != null) {
+                       listener.onClickItem(item)
+                   }
+               }
+           }
+        }
+    }
 
     private var diffUtil = object : DiffUtil.ItemCallback<CrewResponseItem>() {
         override fun areItemsTheSame(
@@ -58,6 +70,9 @@ class CrewAdapter : RecyclerView.Adapter<CrewAdapter.CrewHolder>() {
 
     override fun getItemCount(): Int {
         return differ.currentList.size
+    }
+    interface OnClickItemListener {
+        fun onClickItem(crew : CrewResponseItem)
     }
 
 }

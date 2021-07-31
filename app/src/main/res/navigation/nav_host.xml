@@ -26,12 +26,20 @@
         android:id="@+id/shipFragment"
         android:name="com.baharudin.spacex.ui.fragment.ShipFragment"
         android:label="fragment_ship"
-        tools:layout="@layout/fragment_ship" />
+        tools:layout="@layout/fragment_ship" >
+        <action
+            android:id="@+id/action_shipFragment_to_rocketDetailFragment"
+            app:destination="@id/rocketDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/crewFragment"
         android:name="com.baharudin.spacex.ui.fragment.CrewFragment"
         android:label="fragment_crew"
-        tools:layout="@layout/fragment_crew" />
+        tools:layout="@layout/fragment_crew" >
+        <action
+            android:id="@+id/action_crewFragment_to_crewDetailFragment"
+            app:destination="@id/crewDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailDragonFragment"
         android:name="com.baharudin.spacex.ui.fragment.DetailDragonFragment"
@@ -49,5 +57,23 @@
         <argument
             android:name="ships"
             app:argType="com.baharudin.spacex.data.ship.ShipResponseItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/rocketDetailFragment"
+        android:name="com.baharudin.spacex.ui.fragment.RocketDetailFragment"
+        android:label="fragment_rocket_detail"
+        tools:layout="@layout/fragment_rocket_detail" >
+        <argument
+            android:name="rocket"
+            app:argType="com.baharudin.spacex.data.rocket.RocketResponseItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/crewDetailFragment"
+        android:name="com.baharudin.spacex.ui.fragment.CrewDetailFragment"
+        android:label="fragment_crew_detail"
+        tools:layout="@layout/fragment_crew_detail" >
+        <argument
+            android:name="crew"
+            app:argType="com.baharudin.spacex.data.crew.CrewResponseItem" />
     </fragment>
 </navigation>

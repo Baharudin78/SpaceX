@@ -12,4 +12,9 @@
     <string name="first_flight">First Flight :</string>
     <string name="massa_kg">Massa (Kg) :</string>
     <string name="description">Description :</string>
+    <string name="companyy">Company :</string>
+    <string name="country">Country :</string>
+    <string name="status">Status :</string>
+    <string name="agency">Agency :</string>
+    <string name="wikipedia">Wikipedia :</string>
 </resources>
