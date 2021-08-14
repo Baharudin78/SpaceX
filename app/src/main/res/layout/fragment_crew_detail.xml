@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/black"
     tools:context=".ui.fragment.CrewDetailFragment">
 
     <ImageView
@@ -23,7 +22,7 @@
         android:layout_marginTop="16dp"
         tools:text="Nama"
         android:textSize="20sp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:fontFamily="@font/montserrat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +46,7 @@
             android:layout_marginStart="16dp"
             android:fontFamily="@font/montserrat"
             android:text="@string/status"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <TextView
@@ -57,7 +56,7 @@
             android:layout_marginStart="16dp"
             android:fontFamily="@font/montserrat"
             tools:text="none"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -79,7 +78,7 @@
             android:layout_marginStart="16dp"
             android:fontFamily="@font/montserrat"
             android:text="@string/agency"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <TextView
@@ -88,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:fontFamily="@font/montserrat"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp"
             tools:text="none" />
     </LinearLayout>
@@ -110,7 +109,7 @@
             android:layout_marginStart="16dp"
             android:fontFamily="@font/montserrat"
             android:text="@string/wikipedia"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <TextView
@@ -119,7 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:fontFamily="@font/montserrat"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="20sp"
             tools:text="none" />
     </LinearLayout>

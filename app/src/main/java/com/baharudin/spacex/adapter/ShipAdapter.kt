@@ -2,13 +2,16 @@ package com.baharudin.spacex.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.baharudin.spacex.R
 import com.baharudin.spacex.data.ship.ShipResponseItem
 import com.baharudin.spacex.databinding.ItemShipBinding
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 class ShipAdapter(private val listener : OnItemClickListener) : RecyclerView.Adapter<ShipAdapter.ShipViewHolder>() {
 
@@ -61,11 +64,12 @@ class ShipAdapter(private val listener : OnItemClickListener) : RecyclerView.Ada
         holder.binding.apply {
             Glide.with(contextAdapter)
                 .load(ship.image)
+                .placeholder(R.drawable.circiular)
+                .error(R.drawable.errorre)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .centerCrop()
                 .into(ivShip)
-            tvNamaShip.text = ship.name
-            tvTipe.text = ship.type
-            tvTahunBuat.text = ship.year_built.toString()
-            tvPelabuhan.text = ship.home_port
+
         }
     }
 

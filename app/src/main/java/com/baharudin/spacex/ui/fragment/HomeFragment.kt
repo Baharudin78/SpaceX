@@ -40,6 +40,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), DragonAdapter.OnClickItem
         dragonAdapter = DragonAdapter(this)
 
 
+
         viewModel.getAllDragon.observe(viewLifecycleOwner, { response ->
             when(response) {
                 is Resource.Success -> {

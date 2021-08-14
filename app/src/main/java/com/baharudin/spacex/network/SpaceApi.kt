@@ -20,4 +20,6 @@ interface SpaceApi {
     suspend fun getAllCrew() : Response<CrewResponse>
     @GET("company")
     suspend fun getCompanyInfo() : Response<CompanyResponse>
+
+
 }

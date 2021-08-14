@@ -3,12 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22780797101449277" />
+        <entry key="app/src/main/res/layout/fragment_company_info.xml" value="0.35520833333333335" />
         <entry key="app/src/main/res/layout/fragment_crew.xml" value="0.17274569402228976" />
         <entry key="app/src/main/res/layout/fragment_crew_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_detail_dragon.xml" value="0.22780797101449277" />
         <entry key="app/src/main/res/layout/fragment_detail_ship.xml" value="0.17274569402228976" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22780797101449277" />
+        <entry key="app/src/main/res/layout/fragment_launcher.xml" value="0.35520833333333335" />
         <entry key="app/src/main/res/layout/fragment_rocket_detail.xml" value="0.35520833333333335" />
+        <entry key="app/src/main/res/layout/fragment_ship.xml" value="0.223731884057971" />
         <entry key="app/src/main/res/layout/item_crew.xml" value="0.17274569402228976" />
+        <entry key="app/src/main/res/layout/item_dragon.xml" value="0.223731884057971" />
+        <entry key="app/src/main/res/layout/item_rocket.xml" value="0.223731884057971" />
+        <entry key="app/src/main/res/layout/item_ship.xml" value="0.223731884057971" />
+        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.35520833333333335" />
       </map>
     </option>
   </component>

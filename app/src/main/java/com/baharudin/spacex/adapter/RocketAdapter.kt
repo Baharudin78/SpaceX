@@ -61,6 +61,7 @@ class RocketAdapter(private var listener : OnRocketClickListener) : RecyclerView
         holder.binding.apply {
             Glide.with(contexAdapter)
                 .load(rocket.flickr_images[0])
+                .centerCrop()
                 .into(ivRocket)
             tvRocket.text = rocket.name
         }

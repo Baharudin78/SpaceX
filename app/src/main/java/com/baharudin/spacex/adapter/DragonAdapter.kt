@@ -59,8 +59,12 @@ class DragonAdapter(private val listener : OnClickItemListener) : RecyclerView.A
         holder.binding.apply {
             Glide.with(contextAdapter)
                 .load(dragon.flickr_images[2])
+                .centerCrop()
                 .into(ivDragon)
             tvNamaDragon.text = dragon.name
+
+
+
         }
     }
     override fun getItemCount(): Int {
@@ -70,5 +74,6 @@ class DragonAdapter(private val listener : OnClickItemListener) : RecyclerView.A
     interface OnClickItemListener{
         fun OnItemClick(dragon : DragonResponseItem)
     }
+
 
 }
