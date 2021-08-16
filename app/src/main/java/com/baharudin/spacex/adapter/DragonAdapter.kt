@@ -6,9 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.baharudin.spacex.R
 import com.baharudin.spacex.data.dragon.DragonResponseItem
 import com.baharudin.spacex.databinding.ItemDragonBinding
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 class DragonAdapter(private val listener : OnClickItemListener) : RecyclerView.Adapter<DragonAdapter.DragonViewHolder>() {
 
@@ -59,6 +61,9 @@ class DragonAdapter(private val listener : OnClickItemListener) : RecyclerView.A
         holder.binding.apply {
             Glide.with(contextAdapter)
                 .load(dragon.flickr_images[2])
+                .placeholder(R.drawable.circiular)
+                .error(R.drawable.errorre)
+                .transition(DrawableTransitionOptions.withCrossFade())
                 .centerCrop()
                 .into(ivDragon)
             tvNamaDragon.text = dragon.name

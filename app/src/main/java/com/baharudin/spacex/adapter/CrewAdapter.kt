@@ -6,9 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.baharudin.spacex.R
 import com.baharudin.spacex.data.crew.CrewResponseItem
 import com.baharudin.spacex.databinding.ItemCrewBinding
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 class CrewAdapter(private val listener : OnClickItemListener) : RecyclerView.Adapter<CrewAdapter.CrewHolder>() {
 
@@ -61,6 +63,9 @@ class CrewAdapter(private val listener : OnClickItemListener) : RecyclerView.Ada
         holder.binding.apply {
             Glide.with(contexts)
                 .load(crew.image)
+                .placeholder(R.drawable.circiular)
+                .error(R.drawable.errorre)
+                .transition(DrawableTransitionOptions.withCrossFade())
                 .into(ivCrew)
             tvNama.text = crew.name
             tvStatus.text = crew.status

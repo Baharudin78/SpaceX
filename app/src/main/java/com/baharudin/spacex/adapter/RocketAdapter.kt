@@ -6,9 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.baharudin.spacex.R
 import com.baharudin.spacex.data.rocket.RocketResponseItem
 import com.baharudin.spacex.databinding.ItemRocketBinding
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 class RocketAdapter(private var listener : OnRocketClickListener) : RecyclerView.Adapter<RocketAdapter.RocketHolder>() {
     private lateinit var contexAdapter : Context
@@ -61,6 +63,9 @@ class RocketAdapter(private var listener : OnRocketClickListener) : RecyclerView
         holder.binding.apply {
             Glide.with(contexAdapter)
                 .load(rocket.flickr_images[0])
+                .placeholder(R.drawable.circiular)
+                .error(R.drawable.errorre)
+                .transition(DrawableTransitionOptions.withCrossFade())
                 .centerCrop()
                 .into(ivRocket)
             tvRocket.text = rocket.name

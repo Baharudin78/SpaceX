@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_rocket_launch"
         android:title="@string/ship"/>
 
-    <item android:id="@+id/launcherFragment"
+    <item android:id="@+id/launcherFragment2"
         android:icon="@drawable/ic_launch"
         android:title="@string/launcher"/>
 

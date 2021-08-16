@@ -44,10 +44,10 @@ class HomeFragment : Fragment(R.layout.fragment_home), DragonAdapter.OnClickItem
         viewModel.getAllDragon.observe(viewLifecycleOwner, { response ->
             when(response) {
                 is Resource.Success -> {
-                    hideProgeressbar()
+                    hideShimmer()
                     response.data?.let { dragonResponse ->
                         setRecycleView()
-                        hideProgeressbar()
+                        hideShimmer()
                         dataList.add(dragonResponse)
                         Log.d("hasil","$dragonResponse")
                         dragonAdapter.differ.submitList(dragonResponse)
@@ -55,20 +55,20 @@ class HomeFragment : Fragment(R.layout.fragment_home), DragonAdapter.OnClickItem
                     }
                 }
                 is Resource.Error -> {
-                    hideProgeressbar()
+                    hideShimmer()
                     response.messege?.let { messege ->
                         Log.e(SIGNS,"error di $messege")
                     }
                 }
                 is Resource.Loading -> {
-                    showProgressbar()
+                    showShimmer()
                 }
             }
         })
         viewModel.getAllShip.observe(viewLifecycleOwner,  {response ->
             when(response) {
                 is Resource.Success -> {
-                    hideProgeressbar()
+                    hideShimmer()
                     response.data?.let { shipResponse ->
                         setRecycleViewShip()
                         dataShip.add(shipResponse)
@@ -79,22 +79,24 @@ class HomeFragment : Fragment(R.layout.fragment_home), DragonAdapter.OnClickItem
                     }
                 }
                 is Resource.Error -> {
-                    hideProgeressbar()
+                    hideShimmer()
                     response.messege?.let { messege ->
                         Log.e(SIGNS,"error di $messege")
                     }
                 }
                 is Resource.Loading -> {
-                    showProgressbar()
+                    showShimmer()
                 }
             }
         })
     }
-    private fun hideProgeressbar (){
-        binding.progressBar.visibility = View.INVISIBLE
+    private fun hideShimmer (){
+        binding.shimmerLoading.stopShimmer()
+        binding.shimmerLoading.visibility = View.GONE
     }
-    private fun showProgressbar(){
-        binding.progressBar.visibility = View.VISIBLE
+    private fun showShimmer(){
+        binding.shimmerLoading.startShimmer()
+        binding.shimmerLoading.visibility = View.GONE
     }
     @SuppressLint("NotifyDataSetChanged")
     private fun setRecycleView() {
