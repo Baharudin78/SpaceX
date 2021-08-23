@@ -15,7 +15,7 @@
         <entry key="app/src/main/res/layout/fragment_rocket_detail.xml" value="0.35520833333333335" />
         <entry key="app/src/main/res/layout/fragment_ship.xml" value="0.223731884057971" />
         <entry key="app/src/main/res/layout/fragment_upcoming_launcher.xml" value="0.35520833333333335" />
-        <entry key="app/src/main/res/layout/item_crew.xml" value="0.17274569402228976" />
+        <entry key="app/src/main/res/layout/item_crew.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_dragon.xml" value="0.223731884057971" />
         <entry key="app/src/main/res/layout/item_rocket.xml" value="0.223731884057971" />
         <entry key="app/src/main/res/layout/item_ship.xml" value="0.223731884057971" />

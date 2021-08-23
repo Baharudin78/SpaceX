@@ -22,6 +22,10 @@ class ShipDetailFragment : Fragment(R.layout.fragment_detail_ship) {
         super.onViewCreated(view, savedInstanceState)
 
         shipViewModel = (activity as MainActivity).viewModel
+        getData()
+
+    }
+    private fun getData() {
         binding.apply {
             val ship = shipArgs.ships
             Glide.with(this@ShipDetailFragment)
@@ -32,7 +36,5 @@ class ShipDetailFragment : Fragment(R.layout.fragment_detail_ship) {
             tvYears.text = ship.year_built.toString()
             type.text = ship.type
         }
-
-
     }
 }

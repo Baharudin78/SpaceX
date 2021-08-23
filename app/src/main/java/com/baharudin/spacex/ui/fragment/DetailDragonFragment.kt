@@ -40,7 +40,6 @@ class DetailDragonFragment : Fragment(R.layout.fragment_detail_dragon) {
                         target: Target<Drawable>?,
                         isFirstResource: Boolean
                     ): Boolean {
-                        progressBar4.isVisible = false
                         return false
                     }
 
@@ -51,7 +50,6 @@ class DetailDragonFragment : Fragment(R.layout.fragment_detail_dragon) {
                         dataSource: DataSource?,
                         isFirstResource: Boolean
                     ): Boolean {
-                        progressBar4.isVisible = false
                         return false
                     }
 

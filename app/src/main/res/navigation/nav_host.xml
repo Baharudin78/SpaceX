@@ -76,9 +76,4 @@
             android:name="crew"
             app:argType="com.baharudin.spacex.data.crew.CrewResponseItem" />
     </fragment>
-    <fragment
-        android:id="@+id/launcherFragment2"
-        android:name="com.baharudin.spacex.ui.fragment.LauncherFragment"
-        android:label="fragment_launcher"
-        tools:layout="@layout/fragment_launcher" />
 </navigation>

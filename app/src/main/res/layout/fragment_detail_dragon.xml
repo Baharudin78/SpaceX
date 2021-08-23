@@ -134,11 +134,5 @@
             android:fontFamily="@font/montserrat"
             android:textSize="20sp"
             android:textColor="@color/black"/>
-
-        <ProgressBar
-            android:id="@+id/progressBar4"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
